@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\OAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/mypage', function () {
+    return view('mypage.index');
+});
+Route::get('/login/{social}', [OAuthController::class, 'redirectToProvider'])->name('line.login');
+Route::get('/login/{social}/callback', [OAuthController::class, 'handleProviderCallback']);
