@@ -27,13 +27,13 @@ class OAuthController extends Controller
             Auth::login($user);
             return redirect('/mypage');
         }else{
-            $newuser = new User;
-            $newuser->name = $userSocial->getName();
-            $newuser->email = $userSocial->getEmail();
-            $newuser->line_id = $userSocial->getId();
-            $newuser->save();
+            $newUser = new User;
+            $newUser->name = $userSocial->getName();
+            $newUser->email = $userSocial->getEmail();
+            $newUser->line_id = $userSocial->getId();
+            $newUser->save();
 
-            Auth::login($newuser);
+            Auth::login($newUser);
         }
         //  ログイン処理
         return redirect('/mypage');
